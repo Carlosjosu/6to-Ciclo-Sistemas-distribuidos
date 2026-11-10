@@ -1,0 +1,30 @@
+# Secretos y configuración local
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+
+# Entornos y herramientas
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Resultados generados
+/resultados/
+*.csv
+
+# Docker y sistema operativo
+.docker/
+.DS_Store
+Thumbs.db

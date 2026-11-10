@@ -1,0 +1,20 @@
+services:
+  worker1:
+    build: { context: ., dockerfile: docker/Dockerfile.worker }
+    environment: { WORKER_ID: W1, WORKER_PORT: 7001, WORKER_X: 1, WORKER_Y: 1 }
+    networks: [pedidos]
+  worker2:
+    build: { context: ., dockerfile: docker/Dockerfile.worker }
+    environment: { WORKER_ID: W2, WORKER_PORT: 7002, WORKER_X: 8, WORKER_Y: 7 }
+    networks: [pedidos]
+  central:
+    build: { context: ., dockerfile: docker/Dockerfile.central }
+    depends_on: [worker1, worker2]
+    env_file: .env
+    environment:
+      WORKERS: "W1=worker1:7001:1:1,W2=worker2:7002:8:7"
+      RESULTADOS_DIR: /app/resultados
+    volumes: ["./resultados:/app/resultados"]
+    networks: [pedidos]
+networks:
+  pedidos: {}

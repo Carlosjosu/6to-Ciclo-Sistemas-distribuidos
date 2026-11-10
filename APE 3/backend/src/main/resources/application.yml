@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: practica3-sincronizacion
+server:
+  port: 8080

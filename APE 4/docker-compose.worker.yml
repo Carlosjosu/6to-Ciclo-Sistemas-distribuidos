@@ -1,0 +1,10 @@
+services:
+  worker:
+    build: { context: ., dockerfile: docker/Dockerfile.worker }
+    environment:
+      WORKER_ID: "${WORKER_ID}"
+      WORKER_PORT: 7001
+      WORKER_X: "${WORKER_X}"
+      WORKER_Y: "${WORKER_Y}"
+    ports: ["7001:7001"]
+    restart: unless-stopped
